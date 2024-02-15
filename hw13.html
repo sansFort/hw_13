@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Анімація об'єкту</title>
+    <style>
+        #object {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="object"></div>
+    <button id="rectangle">Прямокутник</button>
+    <button id="triangle">Трикутник</button>
+    <button id="resize">Змінити розмір</button>
+
+    <script>
+        const object = document.getElementById('object');
+        const rectangleBtn = document.getElementById('rectangle');
+        const triangleBtn = document.getElementById('triangle');
+        const resizeBtn = document.getElementById('resize');
+
+        rectangleBtn.addEventListener('click', () => {
+            
+            object.style.animation = 'rectangle 2s linear infinite';
+        });
+
+        triangleBtn.addEventListener('click', () => {
+           
+            object.style.animation = 'triangle 3s linear infinite';
+        });
+
+        let isResized = false;
+
+        resizeBtn.addEventListener('click', () => {
+            if (!isResized) {
+               
+                object.style.width = '400px';
+                object.style.height = '400px';
+                object.style.opacity = '1';
+                isResized = true;
+            } else {
+               
+                object.style.width = '50px';
+                object.style.height = '50px';
+                object.style.opacity = '1';
+                isResized = false;
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes rectangle {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            25% {
+                top: 0;
+                left: calc(100% - 50px);
+            }
+            50% {
+                top: calc(100% - 50px);
+                left: calc(100% - 50px);
+            }
+            75% {
+                top: calc(100% - 50px);
+                left: 0;
+            }
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+
+        @keyframes triangle {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            33% {
+                top: calc(100% - 50px);
+                left: calc(50% - 25px);
+            }
+            66% {
+                top: 0;
+                left: calc(100% - 50px);
+            }
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+    </style>
+</body>
+</html>
